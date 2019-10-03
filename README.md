@@ -13,7 +13,7 @@ This program is useful for those who are interested in the following data or who
 
 ### Installation
 
-This program is written in Python 3 and utilizes pandas. If you are not currently configured to run Python 3 with pandas, you can download the Python 3.x version of ANACONDA at anaconda.com. Installation and user guide can be found here:
+This program is written in Python 3 and utilizes pandas. If you are not currently configured to run Python 3 with pandas, you can download the Python 3.x version of Anaconda at anaconda.com. Installation and user guide can be found here:
 (https://docs.anaconda.com/anaconda/install/)
 
 ### Resources Used in Creating this Project
