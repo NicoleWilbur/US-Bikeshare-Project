@@ -26,7 +26,7 @@ def get_filters():
             city = input("""\nPlease enter Chicago, New York City, or Washington: """).title()
 
 
-    # TO DO: get user input for any month
+    # TO DO: get user input for month (all, january, february, ... , june)
     month = input("""\n\nPlease enter for which month of the year you would like data: """).title()
     while True:
         if month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "All"]:
@@ -150,12 +150,12 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-    user_type_count = df["User Type"].value_counts()
+    user_type_count = df["User Type"].value_counts().to_frame()
     print("\n\nThere were the following numbers of users for your selected time period:\n{}".format(user_type_count))
 
     # TO DO: Display counts of gender
     if "Gender" in df.columns:
-        sex = df["Gender"].value_counts()
+        sex = df["Gender"].value_counts().to_frame()
         print("\nDuring your selected time period, the breakdown of the users by sex was:\n{}".format(str(sex)))
     else:
         print("""\n\nDemographic information on the users' sex was not collected.""")
@@ -171,24 +171,18 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
-
 def raw_data(df):
-
-    raw_data = input('Do you want to view five rows of raw data? Please enter Yes or No.')
-    next_row = 0
-    blocksize = 10 #display rows in blocks of 10
-
-    while raw_data == 'y':
-        next_slice = df[next_row : next_row + blocksize]
-        if len(next_slice) == 0:
-            print ('No more raw data to print.')
+    row = 0
+    while True:
+        raw = input("\n\nWould you like to see rows of the raw data? Please enter Yes or No: ").title()
+        if raw == "Yes":
+            print(df.iloc[0:row])
+            row += 5
+        elif raw != "No":
+            print("\nInvalid entry.")
+            raw = input("\nWould you like to see rows of the raw data? Please enter Yes or No: ").title()
+        else:
             break
-        next_row = next_row + blocksize
-        print (next_slice)
-        raw_data = input('Do you want to view more raw data (y/n)?')
-        #print next 10 rows if there are no more rows to display else exit.
-#end of function
-
 
 def main():
     while True:
@@ -199,6 +193,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
