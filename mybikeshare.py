@@ -1,6 +1,6 @@
 import time
 import pandas as pd
-#import numpy as np
+import numpy as np
 
 CITY_DATA = { 'Chicago': 'chicago.csv',
               'New York': 'new_york_city.csv',
@@ -188,7 +188,6 @@ def raw_data(df):
         raw_data = input('Do you want to view more raw data (y/n)?')
         #print next 10 rows if there are no more rows to display else exit.
 #end of function
-
 
 
 def main():
