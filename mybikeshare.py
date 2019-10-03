@@ -26,7 +26,7 @@ def get_filters():
             city = input("""\nPlease enter Chicago, New York City, or Washington: """).title()
 
 
-    # TO DO: get user input for month (all, january, february, ... , june)
+    # TO DO: get user input for any month
     month = input("""\n\nPlease enter for which month of the year you would like data: """).title()
     while True:
         if month in ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "All"]:
